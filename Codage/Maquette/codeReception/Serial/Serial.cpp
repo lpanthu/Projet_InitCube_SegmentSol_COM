@@ -42,7 +42,7 @@
 			//retour de la chaîne de caractère coplète en cas de réception du retour chariot			
 			if (c=='\r')
 				return result;
-			//sinon ajout du carctère reçu à la chaiîne de caractère			
+			//sinon ajout du carctère reçu à la chaiîne de caractère.		
 			else
 				result+=c;	
         }
