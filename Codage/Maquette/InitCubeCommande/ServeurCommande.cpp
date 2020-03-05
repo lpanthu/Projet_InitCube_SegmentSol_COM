@@ -18,7 +18,7 @@
 #define ADRESSE "127.0.0.1"
 
 ServeurCommande::ServeurCommande() {
-    ecoute.sin_port=htons(PORT);//port d'écoute.
+    ecoute.sin_port=htons(PORT);//port d'écoute
 	ecoute.sin_addr.s_addr=inet_addr(ADRESSE);
 	ecoute.sin_family=AF_INET;
 	canal=socket(AF_INET, SOCK_STREAM,0);//Création de la socket
