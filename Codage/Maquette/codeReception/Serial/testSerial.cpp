@@ -36,6 +36,12 @@ int main()
 		for (int i=1; i<=0; i --){ ///checksum
 			checksum[i];
 		}
+		
+		
+		
+		
+		
+		
 		/* Affichage des données séparés*/
 		cout<<"id :" << id << endl;
 		cout<<"nombre d'octet :" << nbOctetTrame <<endl;
