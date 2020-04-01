@@ -5,6 +5,9 @@
 /// Inclusions 
 #include <iostream>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <boost/asio.hpp>
 
 using namespace std;
 /// Début du code principal
@@ -28,7 +31,7 @@ int main()
 	///données utiles
 	strcat(trame,"-BORD-SMo1570-S%25-RMo1249-R%35-DT2020/03/28 12:19:25 -T25.9 ");
 	///maintenant que la trame est complète (hors checksum)
-	///on met à jour la taille de la trame dans la troisième case (= case 2)
+	///on met à jour la taille de la trame dans la troisième case (=  case 2)
 	trame[2]=strlen(trame);
 	///calcul du checksum (OU exclusif entre chaque octet de la trame)
 	char checksum = trame[0];
@@ -45,55 +48,56 @@ int main()
 	cout << "Extraction du checksum : "<< trame[trame[2]]<< endl;
 	///initialisation des variables
 	//// Gabrielle
-	while (a==1) ///boucle infinie
-	{
-		/* Décortication de la trame */
-		char mess[trame.size()+1]; // création d'un tableau de carractère pour stoquer la reception
-		
-		/* Création tableau pour décortication */
-		char id[2]; 
-		char nbOctetTrame[1];
-		char checksum[2];
-		char status[6];
-		
-		/* Décortication */
-		for (int i=0 ; i<=1; i++){ /// ID
-			id[i] = mess[i];
-		}
-		nbOctetTrame[0]=mess[2]; /// NB d'octet dans la trame
-		for (int i=1; i<=0; i --){ ///checksum
-			checksum[i];
-		}
-		///CMD
+	cout <<endl;
+	cout <<endl;
+	/* Décortication de la trame */
+	//char mess[trame.size()+1]; // création d'un tableau de carractère pour stoquer la reception
+
+	/* Création tableau pour décortication */
+	char id[2]; 
+	char nbOctetTrame[1];
+	char checksum2[2];
+	char status[6];
+	
+	/* Décortication */
+	for (int i=0 ; i<=1; i++){ /// ID
+		id[i] = trame[i];
+	}
+	nbOctetTrame[0]=trame[2]; /// NB d'octet dans la trame
+	for (int i=1; i<=0; i --){ ///checksum
+		checksum2[i];
+	}
+	///CMD
 
 // si tableau à partir de la case 1+1 +1 ==[S,T,A,T,U,S]
-			int g=3;
-			if (trame[g]=="D" & tram[g+1]=="E"){					//si les 2 1er lettres sont DE
-				cout<<"Trame de deploiement"; char CMD[6]; }		///DEPLOY   6
-			if (trame[g]=="D" & tram[g+1]=="E"){					//si les 2 1er lettres sont DA
-				cout<<"Trame de date"; char CMD[4]; }				///DATE     4
-				
-			if (trame[g]=="E"){										//si la 1er lettre est E
-				cout<<"Trame de empty"; char CMD[5]; }				///EMPTY    5
-				
-				
-			if (trame[g]=="M" & trame[g]=="I"){ 					//si les 2 1er lettres sont MI
-				cout<<"Trame de mission"; char CMD[7]; }			///MISSION  7
-			if (trame[g]=="M" & tram[g+1]=="E" & tram[g+2]=="E"){ 	//si les 3 1er lettres sont MEE 
-				cout<<"Trame de meeting"; char CMD[7]; }			///MEETING  7
-			if (trame[g]=="M" & tram[g+1]=="E" & tram[g+2]=="A"){	// si les 3 1er lettres sont MEA
-				cout<<"Trame de meeting"; char CMD[7]; }			///MEASURE  7
-				
-			if (trame[g]=="M" & tram[g+1]=="E" & tram[g+2]=="A"){	// si les 3 1er lettres sont MEA
-				cout<<"Trame de meeting"; char CMD[4]; }			///SAVE     4
-			if (trame[g]=="M" & tram[g+1]=="E" & tram[g+2]=="A"){	// si les 3 1er lettres sont MEA
-				cout<<"Trame de meeting"; char CMD[8]; }			///SURVIVAL 8
-			if (trame[g]=="M" & tram[g+1]=="E" & tram[g+2]=="A"){	// si les 3 1er lettres sont MEA
-				cout<<"Trame de meeting"; char CMD[6]; }			///STATUS   6
-			else {
-				cout <<"ERREUR :: trame de commmande introuvable"
-			}
-		}
+		int g=3;
+		cout << trame[g]<<endl;
+		if (trame[g]=='D' && trame[g+1]=='E'){					//si les 2 1er lettres sont DE
+			cout<<"Trame de deploiement \n"; char CMD[6]; }		///DEPLOY   6
+		if (trame[g]=='D' && trame[g+1]=='A'){					//si les 2 1er lettres sont DA
+			cout<<"Trame de date \n"; char CMD[4]; }				///DATE     4
+			
+		if (trame[g]=='E'){										//si la 1er lettre est E
+			cout<<"Trame de empty \n"; char CMD[5]; }				///EMPTY    5
+			
+			
+		if (trame[g]=='M' && trame[g]=='I'){ 						//si les 2 1er lettres sont MI
+			cout<<"Trame de mission \n"; char CMD[7]; }				///MISSION  7
+		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='E'){ 	//si les 3 1er lettres sont MEE 
+			cout<<"Trame de meeting \n"; char CMD[7]; }				///MEETING  7
+		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='A'){	// si les 3 1er lettres sont MEA
+			cout<<"Trame de meeting \n"; char CMD[7]; }				///MEASURE  7
+			
+		if (trame[g]=='S' && trame[g+1]=='A'){						// si les 3 1er lettres sont MEA
+			cout<<"Trame de sauvegarde \n"; char CMD[4]; }			///SAVE     4
+		if (trame[g]=='S' && trame[g+1]=='U'){	                   	// si les 3 1er lettres sont MEA
+			cout<<"Trame de SURVIVAL \n"; char CMD[8]; }			///SURVIVAL 8
+		if (trame[g]=='S' && trame[g+1]=='T' ){						// si les 3 1er lettres sont MEA
+			cout<<"Trame de status \n"; char CMD[6]; }				///STATUS   6
+		
+		else { 
+			cout <<"ERREUR :: trame de commmande introuvable \n"; 
+		}		
 // 9 possibilités de commandes
 // 
 //alors c'est une trame de status 
@@ -106,4 +110,3 @@ int main()
 		cout<<"id :" << id << endl;
 		cout<<"nombre d'octet :" << nbOctetTrame <<endl;
 	}
-}
