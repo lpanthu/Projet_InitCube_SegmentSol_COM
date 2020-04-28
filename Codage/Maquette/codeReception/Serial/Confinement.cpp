@@ -101,7 +101,7 @@ int main()
 		}
 
 		/// Données 
-		int caseDebutDonnees = 5+f;
+		int caseDebutDonnees = g+f;
 		int tailleTabDonnees = strlen(trame)-caseDebutDonnees-2;
 		char Donnees[tailleTabDonnees];
 		cout<< "les Données brut "<< endl;
@@ -111,11 +111,6 @@ int main()
 			Donnees[h] = trame[pointeur];
 		}
 		cout <<"Les données récupérées sont les suivantes : \n"<<Donnees<<endl;
-		/*
-		int tailleTabDonnees = trame.size()+1 - checksum1.size()+1 - f - id.size()+1;
-		for (int h=f+ ; h <= trame.size()-1; h++){						//Stoquage des données dans un nouveau tableau
-			trame
-		}*/
 		
 // si c'est une trame de status alors ...
 // si c'est une trame de mission alors ...
