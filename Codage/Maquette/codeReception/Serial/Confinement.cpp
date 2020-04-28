@@ -51,7 +51,7 @@ int main()
 																		//// Gabrielle
 	cout <<endl;
 	cout <<endl;
-	cout <<"Code en cours " << endl ;
+	cout <<"Décortication de la Trame \n" << endl ;
 	/* Décortication de la trame */
 	//char mess[]; // création d'un tableau de carractère pour stoquer la reception
 
@@ -74,40 +74,43 @@ int main()
 		int g=3;	// la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
 		//cout <<"Ici nous reçevons la trame suivante \n"<< trame[g]<<endl;
 		if (trame[g]=='D' && trame[g+1]=='E'){							//si les 2 1er lettres sont DE
-			cout<<"Trame de deploiement \n"; f=6; /*char CMD[6]*/; }	///DEPLOY   6
+			cout<<"Trame de deploiement \n"<<endl; f=6; /*char CMD[6]*/; }	///DEPLOY   6
 		if (trame[g]=='D' && trame[g+1]=='A'){							//si les 2 1er lettres sont DA
-			cout<<"Trame de date \n"; f=4; /*char CMD[4];*/ }			///DATE     4
+			cout<<"Trame de date \n"<<endl; f=4; /*char CMD[4];*/ }			///DATE     4
 			
 		if (trame[g]=='E'){												//si la 1er lettre est E
-			cout<<"Trame de empty \n"; f=5; /*char CMD[5];*/ }			///EMPTY    5
+			cout<<"Trame de empty \n"<<endl; f=5; /*char CMD[5];*/ }			///EMPTY    5
 			
 			
 		if (trame[g]=='M' && trame[g]=='I'){ 							//si les 2 1er lettres sont MI
-			cout<<"Trame de mission \n"; f=7; /*char CMD[7];*/ }			///MISSION  7
+			cout<<"Trame de mission \n"<<endl; f=7; /*char CMD[7];*/ }			///MISSION  7
 		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='E'){ 		//si les 3 1er lettres sont MEE 
-			cout<<"Trame de meeting \n"; f=7; /*char CMD[7];*/ }		///MEETING  7
+			cout<<"Trame de meeting \n"<<endl; f=7; /*char CMD[7];*/ }		///MEETING  7
 		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='A'){		//si les 3 1er lettres sont MEA
-			cout<<"Trame de meeting \n"; f=7; /*char CMD[7];*/ }		///MEASURE  7
+			cout<<"Trame de meeting \n"<<endl; f=7; /*char CMD[7];*/ }		///MEASURE  7
 			
 		if (trame[g]=='S' && trame[g+1]=='A'){							// si les 2 1er lettres sont SA
-			cout<<"Trame de sauvegarde \n"; f=4; /*char CMD[4];*/ }		///SAVE     4
+			cout<<"Trame de sauvegarde \n"<<endl; f=4; /*char CMD[4];*/ }		///SAVE     4
 		if (trame[g]=='S' && trame[g+1]=='U'){	                   		// si les 2 1er lettres sont SU
-			cout<<"Trame de SURVIVAL \n"; f=8; /*char CMD[8];*/ }		///SURVIVAL 8
+			cout<<"Trame de SURVIVAL \n"<<endl; f=8; /*char CMD[8];*/ }		///SURVIVAL 8
 		if (trame[g]=='S' && trame[g+1]=='T' ){							// si les 2 1er lettres sont ST
-			cout<<"Trame de status \n"; f=6; /*char CMD[6];*/ }			///STATUS   6
+			cout<<"Trame de status \n"<<endl; f=6; /*char CMD[6];*/ }			///STATUS   6
 		char CMD[f];
 		if(f==0) { 
-			cout <<"ERREUR :: trame de commmande introuvable \n"; 
+			cout <<"ERREUR :: trame de commmande introuvable \n"<<endl; 
 		}
 
 		/// Données 
 		int caseDebutDonnees = 5+f;
 		int tailleTabDonnees = strlen(trame)-caseDebutDonnees-2;
-		
+		char Donnees[tailleTabDonnees];
+		cout<< "les Données brut "<< endl;
 		cout <<"taille des données calculées : "<<tailleTabDonnees<<" Octets"<<endl;
 		for (int h=0; h < tailleTabDonnees; h++){
 			int pointeur = h+caseDebutDonnees ;
+			Donnees[h] = trame[pointeur];
 		}
+		cout <<"Les données récupérées sont les suivantes : \n"<<Donnees<<endl;
 		/*
 		int tailleTabDonnees = trame.size()+1 - checksum1.size()+1 - f - id.size()+1;
 		for (int h=f+ ; h <= trame.size()-1; h++){						//Stoquage des données dans un nouveau tableau
@@ -126,7 +129,7 @@ int main()
 		intId[0]=(int)id[0];
 		intId[1]= (int) id[1];
 		cout<<endl;
-		cout <<"Id : "<< intId<<"\n et id : "<< intId[0] << intId[1] << endl;
-		int inbOctetTrame = (int)nbOctetTrame[0];
-		cout<<"nombre d'octet :" << inbOctetTrame <<endl;
+		cout <<"\n Id : "<< intId<<"\n et id : "<< intId[0] << intId[1] << endl;
+		int inbOctetTrame = (int)nbOctetTrame[0]; 						/// Conversion de char en int 
+		cout<<"\n nombre d'octet :" << inbOctetTrame <<endl;
 	}
