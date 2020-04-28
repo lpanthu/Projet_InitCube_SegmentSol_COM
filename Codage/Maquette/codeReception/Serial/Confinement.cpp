@@ -51,6 +51,7 @@ int main()
 																		//// Gabrielle
 	cout <<endl;
 	cout <<endl;
+	cout <<"Code en cours " << endl ;
 	/* Décortication de la trame */
 	//char mess[]; // création d'un tableau de carractère pour stoquer la reception
 
@@ -71,7 +72,7 @@ int main()
 																		///CMD
 		int f=0;
 		int g=3;	// la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
-		cout << trame[g]<<endl;
+		//cout <<"Ici nous reçevons la trame suivante \n"<< trame[g]<<endl;
 		if (trame[g]=='D' && trame[g+1]=='E'){							//si les 2 1er lettres sont DE
 			cout<<"Trame de deploiement \n"; f=6; /*char CMD[6]*/; }	///DEPLOY   6
 		if (trame[g]=='D' && trame[g+1]=='A'){							//si les 2 1er lettres sont DA
@@ -100,8 +101,15 @@ int main()
 		}
 
 		/// Données 
+		int caseDebutDonnees = 5+f;
+		int tailleTabDonnees = strlen(trame)-caseDebutDonnees-2;
+		
+		cout <<"taille des données calculées : "<<tailleTabDonnees<<" Octets"<<endl;
+		for (int h=0; h < tailleTabDonnees; h++){
+			int pointeur = h+caseDebutDonnees ;
+		}
 		/*
-		int tailleTabDonnees = trame.size()+1 - checksum1.size()+1 - f - ID.size()+1 -
+		int tailleTabDonnees = trame.size()+1 - checksum1.size()+1 - f - id.size()+1;
 		for (int h=f+ ; h <= trame.size()-1; h++){						//Stoquage des données dans un nouveau tableau
 			trame
 		}*/
@@ -110,7 +118,15 @@ int main()
 // si c'est une trame de mission alors ...
 
 		/* Affichage des données séparés*/
-		cout<<"id :" << id << endl;
+		
+		/*int iid1 = (int)id[0];										Premier test de convertion de l'id en int
+		int iid2 = (int)id[1];
+		cout<<"id :" << iid1 << iid2 << endl;*/
+		int intId[2];													///Test 2 de conversion de l'id en int ; résultats plus complets
+		intId[0]=(int)id[0];
+		intId[1]= (int) id[1];
+		cout<<endl;
+		cout <<"Id : "<< intId<<"\n et id : "<< intId[0] << intId[1] << endl;
 		int inbOctetTrame = (int)nbOctetTrame[0];
 		cout<<"nombre d'octet :" << inbOctetTrame <<endl;
 	}
