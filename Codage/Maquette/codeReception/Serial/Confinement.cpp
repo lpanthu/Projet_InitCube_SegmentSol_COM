@@ -57,7 +57,6 @@ int main()
 
 	/* Création tableau pour décortication */
 	char id[2]; 
-	char nbOctetTrame[1];
 	char checksum2[2];
 	char status[6];
 	
@@ -65,10 +64,12 @@ int main()
 	for (int i=0 ; i<=1; i++){ 											/// ID
 		id[i] = trame[i];
 	}
-	nbOctetTrame[0]=trame[2]; 											/// NB d'octet dans la trame
+	int nbOctetTrame = (int)trame[2]; 											/// NB d'octet dans la trame
+	cout<<"\n nb octets trame : "<< nbOctetTrame <<endl;
 	for (int i=1; i<=0; i --){ 											///checksum
 		checksum2[i];
 	}
+	
 																		///CMD
 		int f=0;
 		int g=3;	// la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
@@ -116,15 +117,14 @@ int main()
 // si c'est une trame de mission alors ...
 
 		/* Affichage des données séparés*/
-		
-		/*int iid1 = (int)id[0];										Premier test de convertion de l'id en int
-		int iid2 = (int)id[1];
-		cout<<"id :" << iid1 << iid2 << endl;*/
+
 		int intId[2];													///Test 2 de conversion de l'id en int ; résultats plus complets
-		intId[0]=(int)id[0];
+		intId[0]=(int)id[0];											//Conversion du tableau char de l'id en tableau int 
 		intId[1]= (int) id[1];
 		cout<<endl;
+		cout <<" Id : " << id[0]<<id[1]<< endl ;
+		cout<<endl;
 		cout <<"\n Id : "<< intId<<"\n et id : "<< intId[0] << intId[1] << endl;
-		int inbOctetTrame = (int)nbOctetTrame[0]; 						/// Conversion de char en int 
-		cout<<"\n nombre d'octet :" << inbOctetTrame <<endl;
+		/*int inbOctetTrame = (int)nbOctetTrame[0]; 						/// Conversion de char en int 
+		cout<<"\n nombre d'octet :" << inbOctetTrame <<endl;*/
 	}
