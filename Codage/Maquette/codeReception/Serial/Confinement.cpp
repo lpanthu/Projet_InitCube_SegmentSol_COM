@@ -124,7 +124,6 @@ int main()
 		cout<<endl;
 		cout <<" Id : " << id[0]<<id[1]<< endl ;
 		cout<<endl;
-		cout <<"\n Id : "<< intId<<"\n et id : "<< intId[0] << intId[1] << endl;
 		/*int inbOctetTrame = (int)nbOctetTrame[0]; 						/// Conversion de char en int 
 		cout<<"\n nombre d'octet :" << inbOctetTrame <<endl;*/
 	}
