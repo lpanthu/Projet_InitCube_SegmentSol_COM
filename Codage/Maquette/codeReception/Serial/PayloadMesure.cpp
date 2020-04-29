@@ -5,6 +5,7 @@
  */
 
 #include "PayloadMesure.h"
+#include "TypeMesure.h"
 #include <iostream>
 
 using namespace std;

@@ -4,6 +4,7 @@
  */
 
 #include "Trame.h"
+#include "TypeTrame.h"
 #include <iostream>
 
 #define	TAILLE_MAX		104

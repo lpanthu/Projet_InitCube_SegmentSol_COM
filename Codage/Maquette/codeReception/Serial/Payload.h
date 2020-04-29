@@ -8,7 +8,7 @@
 #ifndef PAYLOAD_H
 #define PAYLOAD_H
 
-class Payload {
+public abstract class Payload {
 	public :
 		void extraireInformations();									//initialisation de la fonction d'extraxtion d'informations
 		Payload(char* payloadBrut); 									//initialisation du constructeur
