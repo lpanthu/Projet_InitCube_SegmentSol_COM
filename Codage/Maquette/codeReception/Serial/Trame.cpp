@@ -1,11 +1,26 @@
+/* BOULANGER GABRIELLE-ANNE
+ * ligne de compilation :
+ * fait le 29/04/2020
+ */
+
 #include "trame.h"
 #include <iostream>
 
 using namespace std;
 
 Trame::Trame(){
-	cout<<"Création de l'objet trame"<<endl;
+	cout<<" \n Création de l'objet trame"<<endl;
 }
 Trame::~Trame(){
-	cout<<"Destruction de l'objet trame"<<endl;
+	cout<<" \n Destruction de l'objet trame"<<endl;
+}
+void Trame::decortiquer(){
+	cout <<" \n Decortication de la Trame"<<endl;
+}
+void Trame::decortiquerPayload(){
+	cout<<" \n Decortication du payload"<<endl;
+	
+}
+boolean Trame::verrifierChecksum(){
+	cout<<"\n Verrification du checksum"<<endl;
 }

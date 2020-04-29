@@ -1,6 +1,7 @@
 /* ligne de compilation :
  * Boulanger Gabrielle-Anne 
  * code principal
+ * fait en Mars-Avril 2020
  */
 /// Inclusions 
 #include <iostream>
