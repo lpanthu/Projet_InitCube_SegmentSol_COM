@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Trame::Trame(){
+Trame::Trame(char* trameBrute){
 	cout<<" \n Création de l'objet trame"<<endl;
 }
 Trame::~Trame(){
