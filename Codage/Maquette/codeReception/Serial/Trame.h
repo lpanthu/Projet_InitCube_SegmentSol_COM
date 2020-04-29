@@ -8,7 +8,7 @@
 
 class Trame {
 	public :
-		void trame(char* trameBrute);
+		Trame(char* trameBrute);
 		void decortiquer(); 											//initialisation de la fonction de décortiquation de trame
 		void decortiquerPayload(); 										//initialisation d'une fonction poour décortiquer le payload
 	private :

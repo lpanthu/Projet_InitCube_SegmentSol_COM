@@ -6,6 +6,7 @@
 #include "Trame.h"
 #include <iostream>
 
+#define	TAILLE_MAX		104
 using namespace std;
 
 Trame::Trame(char* trameBrute){
