@@ -3,7 +3,7 @@
  * fait le 29/04/2020
  */
 
-#include "trame.h"
+#include "Trame.h"
 #include <iostream>
 
 using namespace std;
