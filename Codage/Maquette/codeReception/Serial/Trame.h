@@ -11,6 +11,7 @@ class Trame {
 		Trame(char* trameBrute);
 		void decortiquer(); 											//initialisation de la fonction de décortiquation de trame
 		void decortiquerPayload(); 										//initialisation d'une fonction poour décortiquer le payload
+		int IdTypeTrame(int g; int f);
 	private :
 		char trameBrute[TAILLE_MAX] ; 									//initialisation d'un tableau contenant la trame reçue
 		char id [2];													//initialisation de la varriable contenant l'id transmis par la trame
