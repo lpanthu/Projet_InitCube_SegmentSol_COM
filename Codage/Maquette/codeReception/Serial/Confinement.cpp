@@ -1,4 +1,4 @@
-/* ligne de compilation :
+/* ligne de compilation : g++ Confinement.cpp -o testConfinement -lboost_system -lpthread
  * Boulanger Gabrielle-Anne 
  * code principal
  * fait en Mars-Avril 2020
@@ -60,43 +60,55 @@ int main()
 	char id[2]; 
 	char checksum2[2];
 	char status[6];
-	
+	char checksums;
 	/* Décortication */
 	for (int i=0 ; i<=1; i++){ 											/// ID
 		id[i] = trame[i];
 	}
-	int nbOctetTrame = (int)trame[2]; 											/// NB d'octet dans la trame
+	int nbOctetTrame = (int)trame[2]; 									/// NB d'octet dans la trame
 	cout<<"\n nb octets trame : "<< nbOctetTrame <<endl;
+	cout<< endl << "checksum" << endl;
 	for (int i=1; i<=0; i --){ 											///checksum
 		checksum2[i];
 	}
+	checksums=checksum2[0]^checksum2[1];
+	cout << checksums <<endl ;
+	char checksumx = trame[0];									 		/// verrification de validité trame
+	for (int i=1;i<strlen(trame);i++)
+	{
+		checksumx^=trame[i];
+	}
+	if (checksums == checksumx){
+		cout << "trame valide" << endl;
+	}
+	else{cout <<"non"<<endl;}
 	
 																		///CMD
 		int f=0;
 		int g=3;	// la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
-		//cout <<"Ici nous reçevons la trame suivante \n"<< trame[g]<<endl;
+		cout <<"Ici nous reçevons la trame suivante \n"<< trame[g]<<endl;
 		if (trame[g]=='D' && trame[g+1]=='E'){							//si les 2 1er lettres sont DE
-			cout<<"Trame de deploiement \n"<<endl; f=6; /*char CMD[6]*/; }	///DEPLOY   6
+			cout<<"Trame de deploiement \n"<<endl; f=6;}				///DEPLOY   6
 		if (trame[g]=='D' && trame[g+1]=='A'){							//si les 2 1er lettres sont DA
-			cout<<"Trame de date \n"<<endl; f=4; /*char CMD[4];*/ }			///DATE     4
+			cout<<"Trame de date \n"<<endl; f=4;}						///DATE     4
 			
 		if (trame[g]=='E'){												//si la 1er lettre est E
-			cout<<"Trame de empty \n"<<endl; f=5; /*char CMD[5];*/ }			///EMPTY    5
+			cout<<"Trame de empty \n"<<endl; f=5;}						///EMPTY    5
 			
 			
 		if (trame[g]=='M' && trame[g]=='I'){ 							//si les 2 1er lettres sont MI
-			cout<<"Trame de mission \n"<<endl; f=7; /*char CMD[7];*/ }			///MISSION  7
+			cout<<"Trame de mission \n"<<endl; f=7;  }					///MISSION  7
 		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='E'){ 		//si les 3 1er lettres sont MEE 
-			cout<<"Trame de meeting \n"<<endl; f=7; /*char CMD[7];*/ }		///MEETING  7
+			cout<<"Trame de meeting \n"<<endl; f=7;}					///MEETING  7
 		if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='A'){		//si les 3 1er lettres sont MEA
-			cout<<"Trame de meeting \n"<<endl; f=7; /*char CMD[7];*/ }		///MEASURE  7
+			cout<<"Trame de meeting \n"<<endl; f=7;}					///MEASURE  7
 			
 		if (trame[g]=='S' && trame[g+1]=='A'){							// si les 2 1er lettres sont SA
-			cout<<"Trame de sauvegarde \n"<<endl; f=4; /*char CMD[4];*/ }		///SAVE     4
+			cout<<"Trame de sauvegarde \n"<<endl; f=4;}					///SAVE     4
 		if (trame[g]=='S' && trame[g+1]=='U'){	                   		// si les 2 1er lettres sont SU
-			cout<<"Trame de SURVIVAL \n"<<endl; f=8; /*char CMD[8];*/ }		///SURVIVAL 8
+			cout<<"Trame de SURVIVAL \n"<<endl; f=8;}					///SURVIVAL 8
 		if (trame[g]=='S' && trame[g+1]=='T' ){							// si les 2 1er lettres sont ST
-			cout<<"Trame de status \n"<<endl; f=6; /*char CMD[6];*/ }			///STATUS   6
+			cout<<"Trame de status \n"<<endl; f=6;}						///STATUS   6
 		char CMD[f];
 		if(f==0) { 
 			cout <<"ERREUR :: trame de commmande introuvable \n"<<endl; 
@@ -127,4 +139,5 @@ int main()
 		cout<<endl;
 		/*int inbOctetTrame = (int)nbOctetTrame[0]; 						/// Conversion de char en int 
 		cout<<"\n nombre d'octet :" << inbOctetTrame <<endl;*/
-	}
+	
+}
