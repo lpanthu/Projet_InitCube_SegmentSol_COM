@@ -1,4 +1,5 @@
 /* BOULANGER GABRIELLE-ANNE
+ * Trame.cpp
  * ligne de compilation :
  * fait le 29/04/2020
  */
@@ -14,6 +15,7 @@ using namespace std;
 
 Trame::Trame(char* trameBrute){
 	cout<<" \n Création de l'objet trame"<<endl;
+	int f=0;
 	}
 	
 Trame::~Trame(){
@@ -53,33 +55,36 @@ boolean Trame::verrifierChecksum(){
 	cout<<"\n Verrification du checksum"<<endl;
 }
 
-void Trame::IdTypeTrame(int g; int f){
+void Trame::IdTypeTrame(){
 	//-> Identification de type de trame 
 	//la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
+	TypeTrame type;
 	if (trame[g]=='D' && trame[g+1]=='E'){							//si les 2 1er lettres sont DE
-		cout<<"Trame de deploiement \n"<<endl; f=6; }				///DEPLOY   6
+		type = 4; f=6;}												///DEPLOY   6 //4
 	if (trame[g]=='D' && trame[g+1]=='A'){							//si les 2 1er lettres sont DA
-		cout<<"Trame de date \n"<<endl; f=4; }						///DATE     4
+		type = 9; f=4; }											///DATE     4 //9
 		
 	if (trame[g]=='E'){												//si la 1er lettre est E
-		cout<<"Trame de empty \n"<<endl; f=5; }						///EMPTY    5
+		type = 6; f=5; }											///EMPTY    5 //6
 			
 		
 	if (trame[g]=='M' && trame[g]=='I'){ 							//si les 2 1er lettres sont MI
-		cout<<"Trame de mission \n"<<endl; f=7; }					///MISSION  7
+		 type = 1; f=7; }											///MISSION  7 //1
 	if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='E'){ 		//si les 3 1er lettres sont MEE 
-		cout<<"Trame de meeting \n"<<endl; f=7; }					///MEETING  7
+		 type = 8; f=7; }											///MEETING  7 //8
 	if (trame[g]=='M' && trame[g+1]=='E' && trame[g+2]=='A'){		//si les 3 1er lettres sont MEA
-		cout<<"Trame de meeting \n"<<endl; f=7; }					///MEASURE  7
+		 type = 2; f=7; }											///MEASURE  7 //2
 		
 	if (trame[g]=='S' && trame[g+1]=='A'){							// si les 2 1er lettres sont SA
-		cout<<"Trame de sauvegarde \n"<<endl; f=4; }				///SAVE     4
+		 type = 7; f=4; }											///SAVE     4 //7
 	if (trame[g]=='S' && trame[g+1]=='U'){	                   		// si les 2 1er lettres sont SU
-		cout<<"Trame de SURVIVAL \n"<<endl; f=8; }					///SURVIVAL 8
+		 type =  5; f=8; }											///SURVIVAL 8 //5
 	if (trame[g]=='S' && trame[g+1]=='T' ){							// si les 2 1er lettres sont ST
-		cout<<"Trame de status \n"<<endl; f=6; }					///STATUS   6
+		 type = 3; f=6; }											///STATUS   6 //3
 	char CMD[f];
-	if(f==0) {
+	if(f==0) {														//Si rien ne correspond 
+		type = 10;													/// ERROR     //10
 		cout <<"ERREUR :: trame de commmande introuvable \n"<<endl;
 	}
+	return type;
 }
