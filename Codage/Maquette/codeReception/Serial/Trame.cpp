@@ -15,12 +15,20 @@ using namespace std;
 
 Trame::Trame(char* trameBrute){
 	cout<<" \n Création de l'objet trame"<<endl;
-	int f=0;
-	}
 	
+	nbreOctets = (int)trame[2]; 									/// NB d'octet dans la trame
+	cout<<"\n nb octets trame : "<< nbOctetTrame <<endl;
+	
+	int f=0;
+	for (int i=0 ; i<=1; i++){ 											/// ID
+		id[i] = trame[i];
+	}
+}
+
 Trame::~Trame(){
 	cout<<" \n Destruction de l'objet trame"<<endl;
 }
+
 void Trame::decortiquer(){
 	cout <<" \n Decortication de la Trame"<<endl;
 	for (int i=0 ; i<=1; i++){ 											/// ID
@@ -47,20 +55,39 @@ void Trame::decortiquer(){
 		cout <<"Les données récupérées sont les suivantes : \n"<<Donnees<<endl;
 	
 }
+
+
 void Trame::decortiquerPayload(){
 	cout<<" \n Decortication du payload"<<endl;
 	
 }
+
+
 boolean Trame::verrifierChecksum(){
 	cout<<"\n Verrification du checksum"<<endl;
+	for (int i=1; i<=0; i --){ 											///checksum
+		checksum2[i];
+	}
+	checksums=checksum2[0]^checksum2[1];
+	cout << checksums <<endl ;
+	char checksumx = trame[0];									 		/// verrification de validité trame
+	for (int i=1;i<strlen(trame);i++)
+	{
+		checksumx^=trame[i];
+	}
+	if (checksums == checksumx){
+		cout << "trame valide" << endl;
+	}
+	else{cout <<"trame non valide"<<endl;}
+	
 }
 
 void Trame::IdTypeTrame(){
 	//-> Identification de type de trame 
-	//la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commandes
+	//la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commande
 	TypeTrame type;
 	if (trame[g]=='D' && trame[g+1]=='E'){							//si les 2 1er lettres sont DE
-		type = 4; f=6;}												///DEPLOY   6 //4
+		type = 4;f=6;}												///DEPLOY   6 //4
 	if (trame[g]=='D' && trame[g+1]=='A'){							//si les 2 1er lettres sont DA
 		type = 9; f=4; }											///DATE     4 //9
 		

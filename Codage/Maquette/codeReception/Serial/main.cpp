@@ -53,6 +53,7 @@ int main(){
 	cout << "Taille de la trame checksum compris : "<<strlen(trame)<<endl;
 	cout << "Extraction du checksum : "<< trame[trame[2]]<< endl;
 }
-	
+	Trame trame; 
+	trame.decortiquer();
 	return 0;
 }
