@@ -4,16 +4,22 @@
  * création de 29/04/2020
  */
  
-#ifndef PAYLOADSTATUT_H
-#define PAYLOADSTATUT_H
+#ifndef PAYLOADMESURE_H
+#define PAYLOADMESURE_H
  
- class PayloadMesure : public payload{
+#include "Payload.h"
+#include "TypeMesure.h"
+
+ class PayloadMesure : public Payload {
 	 public:
+		PayloadMesure();
 		PayloadMesure(char* payloadBrut);
+		virtual void extraireInformations();
+		virtual ~PayloadMesure();
 	 private:
 		int nombrePaquet;
 		int numeroPaquet;
 		TypeMesure typeMesure;
 		
  };
-#endif PAYLOADSTATUT_H
+#endif

@@ -7,7 +7,7 @@
  #ifndef PAYLOADMISSION_H
  #define PAYLOADMISSION_H
  
- class PayloadMission : public payload{
+ class PayloadMission : public Payload{
 	 public:
 		PayloadMission(char* payloadBrut);
 	private:

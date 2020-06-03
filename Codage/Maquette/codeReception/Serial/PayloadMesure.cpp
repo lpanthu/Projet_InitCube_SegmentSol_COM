@@ -5,13 +5,20 @@
  */
 
 #include "PayloadMesure.h"
-#include "TypeMesure.h"
+//#include "TypeMesure.h"
 #include <iostream>
 
 using namespace std;
 
-PayloadMesure::PayloadMesure(char* PayloadBrut ){
+PayloadMesure::PayloadMesure(char* payloadBrut ){
+	//doit initialiser l'attribut payloadBrut
 	cout<<" \n Création de l'objet Payload Mesure "<<endl;
+}
+
+ void PayloadMesure::extraireInformations() {
+	//extraction des infos
+	cout<<" \n Extraction des infos "<<endl;
+
 }
 
 PayloadMesure::~PayloadMesure(){
