@@ -11,7 +11,7 @@
 using namespace std;
 
 PayloadMesure::PayloadMesure(char* payloadBrut ){
-	//doit initialiser l'attribut payloadBrut
+	//doit initialiser l'attribut payloadBrut type = 2 ;
 	cout<<" \n Création de l'objet Payload Mesure "<<endl;
 }
 

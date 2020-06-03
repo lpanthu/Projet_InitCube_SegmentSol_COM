@@ -45,14 +45,14 @@ void Trame::decortiquer(){
 																		/// Données 
 	int caseDebutDonnees = g+f;
 	int tailleTabDonnees = strlen(trame)-caseDebutDonnees-2;
-	char Donnees[tailleTabDonnees];
+	char donnees[tailleTabDonnees];
 	cout<< "les Données brut "<< endl;
 	cout <<"taille des données calculées : "<<tailleTabDonnees<<" Octets"<<endl;
 	for (int h=0; h < tailleTabDonnees; h++){
 		int pointeur = h+caseDebutDonnees ;
-		Donnees[h] = trame[pointeur];
+		donnees[h] = trame[pointeur];
 		}
-		cout <<"Les données récupérées sont les suivantes : \n"<<Donnees<<endl;
+		cout <<"Les données récupérées sont les suivantes : \n"<<donnees<<endl;
 	
 }
 

@@ -10,7 +10,7 @@
 using namespace std;
 
 PayloadMission::PayloadMission(char* PayloadBrut){
-	cout<<" \n Création de l'objet Payload Mission apparttir du pointeur PayloadBrut"<<endl;
+	cout<<" \n Création de l'objet Payload Mission appartir du pointeur PayloadBrut"<<endl; // type = 1
 }
 PayloadMission::~PayloadMission(){
 	cout<<" \n Destruction de l'objet Payload Mission"<<endl;
