@@ -8,7 +8,8 @@
 
 using namespace std;
 
-Payload::Payload(char* PayloadBrut){
+Payload::Payload(char* payloadBrut){
+	//Ici, il faut ajouter l'initialisation de l'attribut payloadBrut avec le paramètre.
 	cout<<" \n Création de l'objet Payload apparttir du pointeur PayloadBrut"<<endl;
 }
 Payload::~Payload(){

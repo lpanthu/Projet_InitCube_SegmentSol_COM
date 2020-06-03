@@ -8,13 +8,14 @@
 #ifndef PAYLOAD_H
 #define PAYLOAD_H
 
-public abstract class Payload {
+class Payload {
 	public :
-		void extraireInformations();									//initialisation de la fonction d'extraxtion d'informations
-		Payload(char* payloadBrut); 									//initialisation du constructeur
+		virtual void extraireInformations() ;	//Déclaration de la méthode virtuelle pure d'extraxtion d'informations
+		Payload(char* payloadBrut); 		//Déclaration du constructeur
+		virtual ~Payload();			//Déclaration du destructeur
 	private :
-		char payloadBrut[TAILLE_PAYLOAD]; 							    //initialisation du tableau
-		void numeroPaquet;												///initialisation d'une varriable ..... 
+		char payloadBrut[TAILLE_PAYLOAD]; 	//Déclaration du tableau
+		int numeroPaquet;			//Déclaration d'une variable ..... 
 };
 
 #endif /* PAYLOAD_H */
