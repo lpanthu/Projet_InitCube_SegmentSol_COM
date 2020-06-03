@@ -3,12 +3,17 @@
  * fait le 05/05/2020
  */
 /// Inclusions de toutes les classes ///
-	#include "Trame.cpp"
-	#include "Payload.cpp"
-	#include "PayloadMesure.cpp"
-	#include "PayloadMission.cpp"
-	#include "PayloadStatut.cpp"
-	#include "Trame.cpp"
+
+//Attention!!! Ici, il ne faut pas inclure les cpp mais seulement les .h dont on a besoin
+//Ici, on n'a besoin que de Trame.h
+//	#include "Trame.cpp"
+//	#include "Payload.cpp"
+//	#include "PayloadMesure.cpp"
+//	#include "PayloadMission.cpp"
+//	#include "PayloadStatut.cpp"
+//	#include "Trame.cpp"
+	#include "Trame.h"
+
 /// Inclusions de Biliothèques ///
 	#include <iostream>
 	#include <string.h>
@@ -29,7 +34,7 @@ int main(){
 	///taille provisoire de la trame
 	trame[2]=strlen(trame);
 	///ajout du type de trame
-    strcat(trame,"STATUS");
+    	strcat(trame,"STATUS");
 	///nombre de paquets
 	trame[strlen(trame)]=1;
 	///numéro du paquet
@@ -52,8 +57,13 @@ int main(){
 	cout << "Trame : " << trame << endl;	
 	cout << "Taille de la trame checksum compris : "<<strlen(trame)<<endl;
 	cout << "Extraction du checksum : "<< trame[trame[2]]<< endl;
-}
-	Trame trame; 
-	trame.decortiquer();
+
+
+	//Ici, au lieu de créer une trame par défaut, il faut utiliser le constructeur 
+	//qui prend en paramètre une trame brute sous la forme d'une chaine de caractère
+	//celle fabriquée précédemment.
+	//Trame trame; 
+	Trame* maTrame = new Trame(trame);
+	maTrame->decortiquer();
 	return 0;
 }
