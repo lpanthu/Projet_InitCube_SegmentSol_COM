@@ -5,7 +5,7 @@
  */
 
 #include "Trame.h"
-#include "TypeTrame.h"
+//#include "TypeTrame.h"
 #include <iostream>
 #include <string.h>
 
@@ -121,64 +121,45 @@ bool Trame::verrifierChecksum(){
 void Trame::idTypeTrame(){
 	//-> Identification de type de trame 
 	//la 1er indication pour la commande se situe à la 3e case // 9 possibilités de commande
-	TypeTrame type;
-
+	
 	//Attention, ici, g n'existe pas!
 	//on le crée et on l'initialise
+	TypeTrame type;
 	int f=0;
 	int g=3;
 	if (trameBrute[g]=='D' && trameBrute[g+1]=='E'){							//si les 2 1er lettres sont DE
-		//ici il ne faut pas faire
-		//type = 4;f=6;}	
-		//mais :
-		type = DEPLOY;f=6;}											///DEPLOY   6 //4
+		type = DEPLOY;f=6;														///DEPLOY   6 //4
+	}
 	if (trameBrute[g]=='D' && trameBrute[g+1]=='A'){							//si les 2 1er lettres sont DA
-		//A modifier aussi
-		//type = 9; f=4; 
-	}											///DATE     4 //9
+		type = DATE; f=4;														///DATE     4 //9
+	}
 		
-	if (trameBrute[g]=='E'){
-		//A mofdifier											//si la 1er lettre est E
-		//type = 6; f=5; 
-	}											///EMPTY    5 //6
-			
-		
-	if (trameBrute[g]=='M' && trameBrute[g]=='I'){ 							//si les 2 1er lettres sont MI
-		//A modifier 
-		//type = 1; f=7; 
-	}											///MISSION  7 //1
-	if (trameBrute[g]=='M' && trameBrute[g+1]=='E' && trameBrute[g+2]=='E'){ 		//si les 3 1er lettres sont MEE 
-		//A modifier 
-		//type = 8; f=7; 
-	}											///MEETING  7 //8
-	if (trameBrute[g]=='M' && trameBrute[g+1]=='E' && trameBrute[g+2]=='A'){		//si les 3 1er lettres sont MEA
-		//A modifier
-		//type = 2; f=7; 
-	}											///MEASURE  7 //2
+	if (trameBrute[g]=='E'){													//si la 1er lettre est E
+		type = EMPTY; f=5; 														///EMPTY    5 //6
+	}
+	if (trameBrute[g]=='M' && trameBrute[g]=='I'){	 							//si les 2 1er lettres sont MI
+		type = MISSION; f=7;													///MISSION  7 //1
+	}
+	if (trameBrute[g]=='M' && trameBrute[g+1]=='E' && trameBrute[g+2]=='E'){ 	//si les 3 1er lettres sont MEE 
+		type = MEETING; f=7; 													///MEETING  7 //8
+	}
+	if (trameBrute[g]=='M' && trameBrute[g+1]=='E' && trameBrute[g+2]=='A'){	//si les 3 1er lettres sont MEA
+		type = MEASURE; f=7; 													///MEASURE  7 //2
+	}
 		
 	if (trameBrute[g]=='S' && trameBrute[g+1]=='A'){							// si les 2 1er lettres sont SA
-		//A modifier 
-		//type = 7; f=4; 
-	}											///SAVE     4 //7
-	if (trameBrute[g]=='S' && trameBrute[g+1]=='U'){	                   		// si les 2 1er lettres sont SU
-		
-		//A modifier
-		//type =  5; f=8; 
-	}											///SURVIVAL 8 //5
+		type = SAVE ; f=4;                              	                   ///SAVE     4 //7
+	}
+	if (trameBrute[g]=='S' && trameBrute[g+1]=='U'){        	           		// si les 2 1er lettres sont SU	
+		type = SURVUVAL ; f=8; 													///SURVIVAL 8 //5
+	}
 	if (trameBrute[g]=='S' && trameBrute[g+1]=='T' ){							// si les 2 1er lettres sont ST
-		//A modifier
-		//type = 3; f=6; 
-	}											///STATUS   6 //3
+		type = STATUS ; f=6; 													///STATUS   6 //3
+	}
 	char CMD[f];
-	if(f==0) {
-		//A modifier														//Si rien ne correspond 
-		//type = 10;													/// ERROR     //10
+	if(f==0) {																	//Si rien ne correspond 
+		type = ERROR;															/// ERROR     //10
 		cout <<"ERREUR :: trame de commmande introuvable \n"<<endl;
 	}
-	
-	//Au lieu de faire un return comme ci-dessous, il vaut mieux stocker la valeur dans 
-	//l'attribut type déclaré dans le .h
-	
-	//return type;
 	this->typeTrame = type;
 }

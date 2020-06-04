@@ -25,12 +25,12 @@ class Trame {
 		//dans Trame.cpp, la méthode ne retourne rien donc on choisit cette optiono
 		void idTypeTrame();
 	private :
-		char* trameBrute; 	//initialisation d'un tableau contenant la trame reçue
+		char* trameBrute; 				//initialisation d'un tableau contenant la trame reçue
 		char id [2];					//initialisation de la varriable contenant l'id transmis par la trame
 		int nbreOctets;					//initialisation de la varriable contenant le nombre d'octet dans la trame
 		char checksum;					//initialisation de la varriable contenant le checksum
 		TypeTrame typeTrame;			//initialisation de la varriable stoquant le type de trame reçue
-		bool verrifierChecksum();	//initialisation d'une fonction verrifiant la validité d'une trame
+		bool verrifierChecksum();		//initialisation d'une fonction verrifiant la validité d'une trame
 		Payload *payload;				//initialisation d'un objet probenant d'une classe abstraite
 };
 
